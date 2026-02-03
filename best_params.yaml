@@ -1,0 +1,80 @@
+common:
+  # data_path: "./data/weather.csv"
+  # test_period_path: "./data/weather.csv"
+  batch_num: 12
+  batch_size: 1024
+  # sequence_length: 96
+  # step_forward: 96
+  epochs: 20
+
+LSTM:
+  embedding_size: 8
+  hidden_size: 256
+  lr: 0.005
+  weight_decay: 0.0
+
+LSTM_Attention:
+  embedding_size: 12
+  hidden_size: 4
+  num_layers: 2
+  lr: 0.008763766392896262
+  attn_head: 8
+  weight_decay: 0.0005
+
+LSTMCausalAd_True:
+  embedding_size: 12
+  hidden_size: 4
+  num_layers: 2
+  lr: 0.008763766392896262
+  hidden_size_target: 4
+  normal_epochs: 5
+  adv_epochs: 5
+  adv_weight: 0.001
+  lr_adv: 0.005
+  num_layers_target: 2
+  weight_decay: 6.25e-05
+
+LSTMPostMarkAttCausalAd_True:
+  embedding_size: 16
+  hidden_size: 32
+  num_layers: 2
+  lr: 0.012000929298800044
+  attn_head: 16
+  attn_head_target: 4
+  hidden_size_target: 64
+  normal_epochs: 7
+  adv_epochs: 2
+  adv_weight: 0.0001611653151854881
+  lr_adv: 0.013209751365538388
+  num_layers_target: 2
+  weight_decay: 0.005
+
+
+LSTMCausalAd_False:
+  embedding_size: 10
+  hidden_size: 256
+  num_layers: 2
+  lr: 0.007666002487186829
+  hidden_size_target: 256
+  normal_epochs: 3
+  adv_epochs: 2
+  adv_weight: 0.000117106294860421
+  lr_adv: 0.054179783291450886
+  num_layers_target: 2
+  weight_decay: 0.005
+
+
+LSTMPostMarkAttCausalAd_False:
+  embedding_size: 6
+  hidden_size: 32
+  num_layers: 1
+  lr: 0.007436124620171208
+  attn_head: 8
+  attn_head_target: 16
+  hidden_size_target: 128
+  normal_epochs: 7
+  adv_epochs: 2
+  adv_weight: 0.0001547964231912555
+  lr_adv: 0.0002088934114615011
+  num_layers_target: 2
+  weight_decay: 0.005

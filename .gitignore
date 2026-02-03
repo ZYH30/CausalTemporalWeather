@@ -1,0 +1,23 @@
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PyTorch 模型权重 (文件很大，不建议直接传)
+*.pth
+*.pkl
+save_model/
+checkpoints/
+
+# 数据文件 (避免上传原始数据)
+# *.csv
+# *.parquet
+# data/
+# datasets/
+
+# 环境变量与密钥 (安全第一)
+.env
+.DS_Store
+.idea/
+.vscode/
+logs/
