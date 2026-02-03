@@ -4,7 +4,7 @@
 
 **CausalTemporalWeather** 是一个集成了**因果推断 (Causal Inference)** 与**深度时序建模 (Deep Temporal Modeling)** 的实验性预测框架。该项目旨在解决传统时序模型（如 LSTM, Transformer）在处理包含协变量干扰和动态环境下的鲁棒性问题。
 
-本项目核心引入了**对抗因果机制 (Adversarial Causal Learning)**，通过特征塔 (Feature Tower) 与目标塔 (Target Tower) 的解耦建模，结合对抗损失函数，力求在复杂的金融（收益率预测）与气象（温度/湿度预测）任务中，识别并提取更具泛化能力的因果特征。
+本项目核心引入了**对抗因果机制 (Adversarial Causal Learning)**，通过特征塔 (Feature Tower) 与目标塔 (Target Tower) 的解耦建模，结合对抗损失函数，力求在复杂的金融（收益率预测）或 气象（温度/湿度预测）任务中，识别并提取更具泛化能力的因果特征。
 
 ### 核心亮点
 
@@ -63,14 +63,25 @@ pip install torch polars pandas joblib pyyaml matplotlib scikit-learn
 **1. 默认因果对抗训练:**
 
 ```bash
-python main.py --model LSTMCausalAd --data_path ./data/weather.csv --target OT
+python main.py \
+  --model LSTMCausalAd \
+  --data_path ./data/weather.csv \
+  --target OT \
+  --past_features wd_deg SWDR_W max_wv wv_m rho_g max_PAR VPdef_mbar PAR_ol VPmax_mbar rh Tpot_K \
+  --forward_features month year \
+  --sequence_length 96 \
+  --step_forward 96 \
+  --batch_size 1024 \
+  --lr 0.01 \
+  --epochs 50 \
+  --fix_seed True
 
 ```
 
 **2. 使用 Shell 脚本运行 (如运行普通 LSTM 比较):**
 
 ```bash
-bash runMain.sh  # 默认脚本参数为 python main.py --model LSTM
+bash runMain.sh  
 
 ```
 
