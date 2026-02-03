@@ -106,47 +106,19 @@ if __name__ == '__main__':
     target = args.target
     
     # --- 修改数据准备调用部分 ---
-    # 根据目标列名自动判断使用哪个处理函数
-    if args.target == 'ret':
-        train_data, valid_data, test_data, scaler, agent_encoder, num_ids = prepare_financial_data(
-            data=data,
-            features=features,
-            target=target,
-            sequence_length=args.sequence_length,
-            step_forward=args.step_forward,
-            train_rate=args.train_rate,
-            valid_rate=args.valid_rate,
-            is_scaler = False,
-            use_cache = True,
-            is_save_cache = True,
-            use_rank_norm=args.use_rank_norm
-        )
-    if args.target == 'OT':
-        train_data, valid_data, test_data, scaler, agent_encoder, num_ids = prepare_weather_data(
-            data=data,
-            features=features,
-            target=target,
-            sequence_length=args.sequence_length,
-            step_forward=args.step_forward,
-            train_rate=args.train_rate,
-            valid_rate=args.valid_rate,
-            is_scaler = True,
-            use_cache = False,
-            is_save_cache = True,
-            modelName = args.model
-        )
-        
-    else:
-        # 原有的逻辑
-        train_data, valid_data, test_data, scaler, agent_encoder, num_ids = prepare_team_data(
-            data=data,
-            features=features,
-            target=target,
-            sequence_length=args.sequence_length,
-            step_forward=args.step_forward,
-            train_rate=args.train_rate,
-            valid_rate=args.valid_rate
-        )
+    train_data, valid_data, test_data, scaler, agent_encoder, num_ids = prepare_weather_data(
+        data=data,
+        features=features,
+        target=target,
+        sequence_length=args.sequence_length,
+        step_forward=args.step_forward,
+        train_rate=args.train_rate,
+        valid_rate=args.valid_rate,
+        is_scaler = True,
+        use_cache = False,
+        is_save_cache = True,
+        modelName = args.model
+    )
     
     args.num_ids = num_ids
     
