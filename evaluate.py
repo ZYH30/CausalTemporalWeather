@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import root_mean_squared_error,mean_squared_error
 import pandas as pd
 
-from util import device, batch_generator, AgentStandardScaler, _to_tensor
+from util import device, batch_generator, WeatherScaler, _to_tensor
 
 
 # 【新增】插入这个函数
