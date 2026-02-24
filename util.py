@@ -418,7 +418,7 @@ def prepare_weather_data(
         is_save_cache: bool = True,
         cache_dir: str = './data_cache',
         modelName: str = 'LSTM'
-) -> Tuple[List, List, List, TeamStandardScaler, None, None]:
+) -> Tuple[List, List, List, WeatherScaler, None, None]:
     """
     天气数据专用预处理函数
     适配单一时间序列，每10分钟记录一次
